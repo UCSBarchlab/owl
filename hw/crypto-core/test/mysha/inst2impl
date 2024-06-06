@@ -1,0 +1,79 @@
+PSEUDO:
+auipc
+addi
+sw
+lui
+lw
+slt
+andi
+mv (addi)
+add
+lbu
+sb
+snez (sltu)
+and
+seqz (sltiu)
+li (addi & lui)
+slli
+or
+sub
+xori
+not (xori)
+j (jal)
+
+REAL:
+auipc
+addi
+sw
+lui
+lw
+slt
+andi
+add
+lbu
+sb
+sltu
+and 
+sltiu
+slli
+or
+sub 
+xor
+jal 
+
+
+*conditional move* 
+    using encoding of sh1add
+    sh1add instruction is defined in extension `zba` of rv32, here we use the encoding of sh1add as cmov 
+
+    Mnemonic:
+        sh1add rd, rs1, rs2
+    ___________________________________________________________________________________________________________
+    |31                   25|24           20|19           15|14       12|11            7|6                   0|
+    +-----------------------+---------------+---------------+-----------+---------------+---------------------|
+    |  0  0  1  0  0  0  0  |       rs2     |       rs1     |  0  1  0  |       rd      |  0  1  1  0  0  1  1|
+    +-----------------------+---------------+---------------+-----------+---------------+---------------------|
+    |       SH1ADD          |               |               |   SH1ADD  |               |           OP        |
+
+    Description:
+        Check if rs1 <= 0. If rs1 <= 0 then rd = rd, else rd = rs2
+        (rs1)?(rd = rs2):(rd = rd)
+
+    Potential Strategy:
+        perform: slti rd, rs1, 1
+            rd = (rs1 < imm)? 1 : 0
+        based on the value of rd
+            which should be calculated by alu and stored in alu_out
+        update wb_reg_write_data.next with rd or rs2
+
+
+instruction I(michael) forget to mention in this file:
+    xor
+
+instruction I(michael) manually added to generated control unit:
+    xor
+    cmov
+
+instruction that doesn't required by sha256 but required by alu test:
+    slti
+    ori

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+rm bin/*  # clean out bin folder
+for file in asm/* 
+do
+    name=$(basename $file)
+    if [ -f $file ]
+    then
+        if [[ "${name#*.}" == "S" ]]
+        then
+            riscv32-unknown-elf-gcc \
+                -march=rv32ima \
+                -mabi=ilp32 \
+                -nostdlib \
+                -nostartfiles \
+                -I asm \
+                -T asm/include/link.ld asm/$name \
+                -o bin/${name%%.*}.exe
+            riscv32-unknown-elf-objcopy \
+                -I elf32-littleriscv \
+                -O binary \
+                bin/${name%%.*}.exe \
+                bin/${name%%.*}.o
+            rm bin/${name%%.*}.exe
+        fi
+    fi
+done
+

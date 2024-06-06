@@ -1,0 +1,21 @@
+addi
+sw
+lui
+lw
+slt
+andi
+mv
+add
+lbu
+sb
+snez
+and
+seqz
+li
+slli
+or
+sub
+not
+j
+*conditional move*
+*special termination instruction*
