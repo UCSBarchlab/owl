@@ -87,6 +87,7 @@ $ ./aes.sh
 ```
 
 This script runs control logic synthesis for the AES hardware accelerator.
+It takes approximately 5-10 minutes to complete.
 
 This benchmark demonstrates synthesizing the control logic all-at-once instead
 of independently solving for each instruction. Therefore, the output is not
