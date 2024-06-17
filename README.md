@@ -63,8 +63,9 @@ steps written there.
 
 Next, `cd` into the `/opt/ila-to-rosette/build` directory on the container. Running
 the binary `ILAngToRosette` will produce a file called `riscv_rspec.rkt`, which
-contains the translation for a RISC-V ILA to Rosette pre/postconditions. If you instead
-wish to produce the Rosette specification for the AES accelerator:
+contains the translation for a RISC-V ILA to Rosette pre/postconditions.
+
+If you wish to produce the Rosette specification for the AES accelerator:
 
 1. Uncomment the lines of code specified in `/opt/ila-to-rosette/src/main.cc` and
    comment out the `riscv` lines (also specified). In total: 3 lines commented,
