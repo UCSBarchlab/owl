@@ -1,4 +1,3 @@
-@@ -1,5 +1 @@
 The directory contains a PyRTL implementation of an AES hardware accelerator
 with the control logic replaced with holes.
 
