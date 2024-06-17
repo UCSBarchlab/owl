@@ -26,6 +26,8 @@ RUN apt update && \
 
 WORKDIR /opt
 COPY . /opt
+RUN mkdir /opt/results
+
 # Build boolector
 RUN git clone https://github.com/boolector/boolector && \
 	cd boolector && \
@@ -58,3 +60,6 @@ RUN cd /opt/ila-to-rosette && mkdir -p build && cd build && \
 
 # Install Rosette
 RUN raco pkg install --auto rosette
+
+# Install Oyster
+RUN cd /opt && raco pkg install oyster/
