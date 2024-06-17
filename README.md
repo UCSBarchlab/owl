@@ -53,26 +53,6 @@ Docker image, landing you at a bash shell prompt.
 $ ./docker-run.sh
 ```
 
-#### Step 1c
-
-At the bash prompt, run:
-
-```shell
-$ ./setup.sh
-```
-
-to install the Oyster language framework. Now the environment is all set up and
-ready to run the benchmarks.
-
-Note: You may need to run `setup.sh` again after exiting and re-entering the
-Docker environment. You will need to rerun if you see an error such as:
-
-```
-runner.rkt:5:9: collection not found
-  for module path: oyster
-  collection: "oyster"
-  ...
-```
 
 ### Step 2: PyRTL to Oyster IR
 
