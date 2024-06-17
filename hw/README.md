@@ -32,7 +32,7 @@ To generate a single-cycle design (`-s 1`) with the base integer instruction set
 (`-e i`) and "holes" for the control logic (`-c`), run:
 
 ```shell
-$ python3 rv-cpu/generate_cpu.py -s 1 -e i -c
+$ python3 generate_cpu.py -s 1 -e i -c
 ```
 
 The script writes the Oyster IR to standard out. You can compare it with the
@@ -49,7 +49,7 @@ To generate the Oyster for the largest design in the paper:
 * and "holes" for the control logic (`-c`)
 
 ```shell
-$ python3 rv-cpu/generate_cpu.py -s 2 -e c -c
+$ python3 generate_cpu.py -s 2 -e c -c
 ```
 
 ## Constant-Time Cryptography Core

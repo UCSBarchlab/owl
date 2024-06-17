@@ -24,6 +24,8 @@ RUN apt update && \
     libz3-dev \
     libgoogle-glog-dev
 
+WORKDIR /opt
+COPY . /opt
 # Build boolector
 RUN git clone https://github.com/boolector/boolector && \
 	cd boolector && \
@@ -49,13 +51,10 @@ RUN git clone https://github.com/PrincetonUniversity/ILAng.git && \
     make
 
 ## Build ila-to-rosette
-COPY ila-to-rosette /ila-to-rosette
-RUN cd ila-to-rosette && mkdir -p build && cd build && \
-    cmake -Dilang_DIR=/ILAng/build -Dnlohmann_json_DIR=/ILAng/build/extern/json -Dverilogparser_DIR=/ILAng/build/extern/vlog-parser -Dvcdparser_DIR=/ILAng/build/extern/vcd-parser -Dsmtparser_DIR=/ILAng/build/extern/smt-parser -Dfmt_DIR=/ILAng/build/extern/fmt .. && \
+RUN cd /opt/ila-to-rosette && mkdir -p build && cd build && \
+    cmake -Dilang_DIR=/opt/ILAng/build -Dnlohmann_json_DIR=/opt/ILAng/build/extern/json -Dverilogparser_DIR=/opt/ILAng/build/extern/vlog-parser -Dvcdparser_DIR=/opt/ILAng/build/extern/vcd-parser -Dsmtparser_DIR=/opt/ILAng/build/extern/smt-parser -Dfmt_DIR=/opt/ILAng/build/extern/fmt .. && \
     make
 
 
 # Install Rosette
 RUN raco pkg install --auto rosette
-
-WORKDIR /mnt

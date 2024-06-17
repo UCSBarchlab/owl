@@ -81,15 +81,15 @@ steps written there.
 
 ### Step 3: ILA to Rosette
 
-Next, `cd` into the `/ila-to-rosette/build` directory. Running the binary
-`ILAngToRosette` will produce a file called `riscv_rspec.rkt`, which contains
-the translation for a RISC-V ILA to Rosette pre/postconditions. If you instead
+Next, `cd` into the `/opt/ila-to-rosette/build` directory on the container. Running
+the binary `ILAngToRosette` will produce a file called `riscv_rspec.rkt`, which
+contains the translation for a RISC-V ILA to Rosette pre/postconditions. If you instead
 wish to produce the Rosette specification for the AES accelerator:
 
-1. Uncomment the lines of code specified in `/ila-to-rosette/src/main.cc` and
+1. Uncomment the lines of code specified in `/opt/ila-to-rosette/src/main.cc` and
    comment out the `riscv` lines (also specified). In total: 3 lines commented,
    1 line uncommented.
-2. Go to `/ila-to-rosette/build` and run the `cmake` command listed in the
+2. Go to `/opt/ila-to-rosette/build` and run the `cmake` command listed in the
    Docker file associated with `ila-to-rosette`.
 3. Run `make`.
 4. Run the `ILAngToRosette` binary which will produce `AES_128_Rnd_rspec.rkt`.
